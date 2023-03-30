@@ -1,11 +1,12 @@
 defmodule EmployeeTest do
-  use ExUnit
-  import ApitestUtils
-  import HTTPoison
+  use ExUnit.Case, async: true
+  import  ApitestUtils
+  #import HTTPoison
 
-  url = "https://reqres.in/api/users/2"
+  _url = "https://reqres.in/api/users/2"
 
   test "Simple Get" do
+    url = "https://reqres.in/api/users/2"
     response = doGet(url)
     IO.puts(response)
     {:ok, data} = Jason.decode(response)
