@@ -44,7 +44,8 @@ defmodule Apitesting.MixProject do
        {:excoveralls, "~> 0.16.1"},
        {:mysql, "~>1.8"},
        {:ecto, "~>3.9"},
-       {:myxql, "~> 0.4.0"}
+       {:myxql, "~> 0.4.0"},
+       {:ex_unit_notifier, "~> 0.1.2", only: :test}
 
       # {:ex_unit_html_formatter, "~> 1.0"},
       # {:reportex, "~> 0.15"}

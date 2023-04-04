@@ -1,6 +1,7 @@
 defmodule SqlDataTest do
   use ExUnit.Case, async: true
   ExUnit.start()
+  Code.require_file("test_helper.exs", __DIR__)
   import  Db_Utils
   import  ApitestUtils
 
@@ -19,17 +20,17 @@ defmodule SqlDataTest do
     # #get_data(conn)
   end
 
-  test "Test Get" do
+  test "Get Method with validation against database" do
     url = "https://reqres.in/api/users/2"
     response = doGet(url)
-    IO.puts(response)
+    # IO.puts(response)
     {:ok, data} = Jason.decode(response)
     IO.puts(data["data"]["first_name"])
     conn = setup_DB()
     sql = query(conn, "select firstName from users where id=2")
     {:ok, sql}
     {:ok, sqldata} = Enum.fetch(sql,0)
-    IO.puts(sqldata)
+    # IO.puts(sqldata)
     assert data["data"]["first_name"] == hd sqldata
   end
 end

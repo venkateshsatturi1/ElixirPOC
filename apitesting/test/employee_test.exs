@@ -22,7 +22,7 @@ defmodule EmployeeTest do
     #{:ok, data} = Jason.decode(responce1)
   end
 
-  @tag  content: true
+  @tag  content: false
   test "send url with query parms" do
     url = "https://reqres.in/api/users"
     params =  %{page: 2}
@@ -31,7 +31,7 @@ defmodule EmployeeTest do
     IO.puts(res1 |>  elem(2))
   end
 
-  @tag content: true
+  @tag content: false
   test "send url,query parameter, headers" do
     url = "https://reqres.in/api/users"
     params =  %{page: 2}
@@ -41,4 +41,18 @@ defmodule EmployeeTest do
     IO.puts(res1 |>  elem(2))
   end
 
+  @tag content: true
+  test "Simple POST" do
+    url = "https://thetestingworldapi.com/api/studentsDetails"
+    payload = %{id: "5", first_name: "DeepikaD", middle_name: "D", last_name: "Hegde", date_of_birth: "05-Oct"}
+    response = doPost_with_payload(url, payload)
+    IO.puts(response)
+    end
+
+  @tag content: true
+  test "Post with data from file" do
+      url = "https://thetestingworldapi.com/api/studentsDetails"
+      response = doPost_with_file("https://thetestingworldapi.com/api/studentsDetails", "C:/venkatesh/gitprojects/elixir/ElixirPOC/apitesting/data/samplePOST.json")
+      IO.puts(response)
+    end
 end
