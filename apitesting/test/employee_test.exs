@@ -52,7 +52,7 @@ defmodule EmployeeTest do
   @tag content: true
   test "Post with data from file" do
       url = "https://thetestingworldapi.com/api/studentsDetails"
-      response = doPost_with_file("https://thetestingworldapi.com/api/studentsDetails", "C:/venkatesh/gitprojects/elixir/ElixirPOC/apitesting/data/samplePOST.json")
+      response = doPost_with_file("https://thetestingworldapi.com/api/studentsDetails", "./data/samplePOST.json")
       IO.puts(response)
     end
 end
